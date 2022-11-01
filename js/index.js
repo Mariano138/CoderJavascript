@@ -9,7 +9,7 @@ let apellido = prompt("Ingrese su apellido")
 
 alert("Bienvenido"+ " " + nombre + " " + apellido)
 
-let metodoPago = prompt("Tarjeta (incluye mercado pago), Efectivo");
+let metodoPago = prompt("Seleccione metodo de pago: Tarjeta (incluye mercado pago), Efectivo");
 
 //Metodo de pago
 
