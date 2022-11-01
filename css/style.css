@@ -1,0 +1,22 @@
+body {
+    background-color: #90A17D;
+}
+
+/* Imagenes */
+
+.conejo__img {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+.conejo__img2 {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+
