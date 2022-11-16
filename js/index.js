@@ -60,11 +60,11 @@ seleccionar.onclick = () => service();
 
 function Comida() {
     let meses = prompt("Introduzca la edad de su conejo en meses de 1 a 12 para saber que tipo de comida es la recomendada.");
-    if (meses > 0 && meses < 3) {
+    if (meses >= 1 && meses <= 3) {
         alert("su conejo es un gazapo aun le recomendamos no sobrealimentarlo y solo darle lechuga y tomate");
-    } else if (meses > 4 && meses < 6) {
+    } else if (meses >= 4 && meses <= 6) {
         alert("Su conejo alcanzo la madurez sexual, y es capaz de comer alfalfa o tambien conocido como pienso, deberia siempre tener este alimento a su disposición al igual que agua, ademas deberia realizar 1 o 2 comidas de lechuga diarias y zanahorias");
-    } else if (meses > 6 && meses < 13) {
+    } else if (meses >= 6 && meses <= 12) {
         alert("Su conejo deberia tener heno siempre a su disposición ya que es el 80% de su alimentación al igual que agua, ademas de realizar 4 comidas al dia de lechuga, tomate y/o zanahorias.");
     } else {
         alert("Porfavor Ingrese la edad de su conejo en meses entre 1 y 12");
