@@ -1,76 +1,92 @@
+//Registro
 
-let bienvenida = alert("Bienvenido a venta de Conejos Pepillo y Lylia")
+function registro() {
+  let bienvenida = alert("Bienvenido a venta de Conejos Pepillo y Lylia")
 
-let Registro = alert("Porfavor cree una cuenta para continuar")
+  let Registro = alert("Porfavor cree una cuenta para continuar")
 
-let nombre = prompt("Ingrese su nombre")
+  let nombre = prompt("Ingrese su nombre")
 
-let apellido = prompt("Ingrese su apellido")
+  let apellido = prompt("Ingrese su apellido")
 
-alert("Bienvenido"+ " " + nombre + " " + apellido)
-
-let metodoPago = prompt("Seleccione metodo de pago: Tarjeta (incluye mercado pago), Efectivo");
+  alert("Bienvenido"+ " " + nombre + " " + apellido)
+}
+let registrarse = document.getElementById("registrarse");
+registrarse.onclick = () => registro();
 
 //Metodo de pago
 
-if (metodoPago == "tarjeta"){
-    alert("Selecciono metodo de pago con Tarjeta")
-  } else if ("efectivo"){
-    "Selecciono pago en efectivo"
-  } 
-  else {
-    alert ("metodo de pago invalido")
-  }
+function pago() {
+    let pago = prompt("Método de pago: 1) Tarjeta 2) Efectivo");
 
-//raza
-
-let raza = prompt("Porfavor seleccione la raza de conejo: cabeza de león, conejo común, orejas caídas.");
-
-//sexo
-
-let sexo = prompt("Porfavor seleccione el sexo de su conejo: macho, hembra")
-
-//años
-
-function Anios(edad){
-    switch (edad) {
-        case "3":
-            return "Eligió 3 meses de edad";
-
-        case "4":
-            return "Eligió 4 meses de edad";
-                
-        case "5":
-            return "Eligió 5 meses de edad";
-                    
-        case "6":
-            return "Eligió 6 meses de edad";
-
-        case "7":
-            return "Eligió 7 meses de edad";
-
-        case "8":
-            return "Eligió 8 meses de edad";
-
-        default:
-            return "Edad Incorrecta";
+    switch (pago) {
+        case "1":
+            alert("Seleccionó Tarjeta como su método de pago.");
+            break;
+        case "2":
+            alert("Seleccionó Efectivo como su método de pago.");
+            break;
     }
 }
-
-let respuesta = Anios(prompt("Porfavor ingrese la edad en meses de su conejo de 3 a 8"));
-alert(respuesta)
-
-//confirmar compra y total
-
-let confirmacionCompra = prompt("Desea confirmar compra?");
+let pago1 = document.getElementById("metodoPago");
+metodoPago.onclick = () => pago();
 
 
-function total(){
-    return("su compra es: conejo " + raza + ", " + sexo + ", " + "Metodo de pago:" + " " + metodoPago);
+// Objetos con arrays y utilización de find
+
+function service() {
+    const Conejos = [
+    {id:1, nombre:"Lylia", raza:"Común", sexo:"Hembra", edad:"1 año", precio: 800},
+    {id:2, nombre:"Tira", raza:"Común", sexo:"Hembra", edad:"1 año", precio: 800},
+    {id:3, nombre:"Gazapo", raza:"Cabeza de león", sexo:"Hembra", edad:"3 meses", precio: 1500},
+    {id:4, nombre:"Pepillo", raza:"Cabeza de león", sexo:"Hembra", edad:"1 año", precio: 1500},
+    {id:5, nombre:"Gazapo", raza:"Orejas caidas", sexo:"Hembra", edad:"3 meses", precio: 1000},
+    ];
+
+    let id = parseInt(prompt("Ingrese el número del conejo a comprar (del 1 al 5)"));
+    let eleccion = Conejos.find(producto => producto.id === id);
+
+    if (eleccion) {
+        let mensaje = `Agrego ${eleccion.nombre}, raza: ${eleccion.raza}, sexo: ${eleccion.sexo}, su edad es: ${eleccion.edad}, con un costo de $${eleccion.precio}`;
+        alert(mensaje);
+    } else {
+        alert("Por favor introduzca un numero válido");
+    }
 }
-  
-if (confirmacionCompra == "si") {
-    alert(total());
-} 
+let seleccionar = document.getElementById("seleccionar");
+seleccionar.onclick = () => service();
 
-alert("Gracias por su visita" + " " + nombre)
+//Comida
+
+function Comida() {
+    let meses = prompt("Introduzca la edad de su conejo en meses de 1 a 12 para saber que tipo de comida es la recomendada.");
+    if (meses > 0 && meses < 3) {
+        alert("su conejo es un gazapo aun le recomendamos no sobrealimentarlo y solo darle lechuga y tomate");
+    } else if (meses > 4 && meses < 6) {
+        alert("Su conejo alcanzo la madurez sexual, y es capaz de comer alfalfa o tambien conocido como pienso, deberia siempre tener este alimento a su disposición al igual que agua, ademas deberia realizar 1 o 2 comidas de lechuga diarias y zanahorias");
+    } else if (meses > 6 && meses < 13) {
+        alert("Su conejo deberia tener heno siempre a su disposición ya que es el 80% de su alimentación al igual que agua, ademas de realizar 4 comidas al dia de lechuga, tomate y/o zanahorias.");
+    } else {
+        alert("Porfavor Ingrese la edad de su conejo en meses entre 1 y 12");
+    }
+}
+let alimento = document.getElementById("alimento");
+alimento.onclick = () => Comida();
+
+//Confirmar compra
+
+function confirmar() {
+
+ let confirmacionCompra = prompt("Desea confirmar compra?");
+
+  
+ if (confirmacionCompra == "si") {
+     alert("Gracias por su compra");
+ } else {
+    alert("Gracias por su visita");
+ }
+
+}
+
+let confirmartotal = document.getElementById("confirmartotal");
+confirmartotal.onclick = () => confirmar();

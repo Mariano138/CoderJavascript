@@ -1,22 +1,16 @@
-body {
+
+body{
     background-color: #90A17D;
 }
 
-/* Imagenes */
+
+li {
+    list-style: none;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
 
 .conejo__img {
+    max-width: 100%;
     height: 300px;
-    background-size: cover;
-    background-position: center;
-    margin-right: 10px;
-    border-radius: 10px;
 }
-.conejo__img2 {
-    height: 300px;
-    background-size: cover;
-    background-position: center;
-    margin-right: 10px;
-    border-radius: 10px;
-}
-
-
