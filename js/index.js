@@ -1,92 +1,962 @@
-//Registro
-
-function registro() {
-  let bienvenida = alert("Bienvenido a venta de Conejos Pepillo y Lylia")
-
-  let Registro = alert("Porfavor cree una cuenta para continuar")
-
-  let nombre = prompt("Ingrese su nombre")
-
-  let apellido = prompt("Ingrese su apellido")
-
-  alert("Bienvenido"+ " " + nombre + " " + apellido)
-}
-let registrarse = document.getElementById("registrarse");
-registrarse.onclick = () => registro();
-
-//Metodo de pago
-
-function pago() {
-    let pago = prompt("Método de pago: 1) Tarjeta 2) Efectivo");
-
-    switch (pago) {
-        case "1":
-            alert("Seleccionó Tarjeta como su método de pago.");
-            break;
-        case "2":
-            alert("Seleccionó Efectivo como su método de pago.");
-            break;
-    }
-}
-let pago1 = document.getElementById("metodoPago");
-metodoPago.onclick = () => pago();
-
-
-// Objetos con arrays y utilización de find
-
-function service() {
-    const Conejos = [
-    {id:1, nombre:"Lylia", raza:"Común", sexo:"Hembra", edad:"1 año", precio: 800},
-    {id:2, nombre:"Tira", raza:"Común", sexo:"Hembra", edad:"1 año", precio: 800},
-    {id:3, nombre:"Gazapo", raza:"Cabeza de león", sexo:"Hembra", edad:"3 meses", precio: 1500},
-    {id:4, nombre:"Pepillo", raza:"Cabeza de león", sexo:"Hembra", edad:"1 año", precio: 1500},
-    {id:5, nombre:"Gazapo", raza:"Orejas caidas", sexo:"Hembra", edad:"3 meses", precio: 1000},
+const alimentos = [
+        {
+            id: "alimento-01",
+            titulo: "Alimento Balanceado",
+            imagen: "./imagenes/alfalfa.jpg",
+            sexo: "Bolsa de 25kg",
+            categoria: {
+                nombre: "Alimento balanceado",
+                id: "alimento"
+            },
+            precio: 2000
+    
+        },
+    
+        {
+            id: "alimento-02",
+            titulo: "Lechuga",
+            imagen: "./imagenes/lechuga.jpg",
+            sexo: "X kg",
+            categoria: {
+                nombre: "Lechuga",
+                id: "alimento"
+            },
+            precio: 100
+    
+        },
+    
+        {
+            id: "alimento-03",
+            titulo: "Tomate",
+            imagen: "./imagenes/tomaco.jpg",
+            sexo: "X kg",
+            categoria: {
+                nombre: "Tomate",
+                id: "alimento"
+            },
+            precio: 200
+    
+        },
+    
+        {
+            id: "alimento-04",
+            titulo: "Zanahoria",
+            imagen: "./imagenes/zanahoria.jpg",
+            sexo: "X kg",
+            categoria: {
+                nombre: "Zanahoria",
+                id: "alimento"
+            },
+            precio: 150
+    
+        },
     ];
+    
+    //conejos
+    
+    const productos = [
+        {
+            id: "conejo-01",
+            titulo: "Conejo común",
+            imagen: "./imagenes/comun1.jpg",
+            sexo: "hembra",
+            categoria: {
+                nombre: "Conejo común 1",
+                id: "conejo"
+            },
+            precio: 800
+    
+        },
+    
+        {
+            id: "conejo-02",
+            titulo: "Conejo común",
+            imagen: "./imagenes/comun2.jpg",
+            sexo: "hembra",
+            categoria: {
+                nombre: "Conejo común 2",
+                id: "conejo"
+            },
+            precio: 800
+    
+        },
+    
+        {
+            id: "conejo-03",
+            titulo: "Conejo común",
+            imagen: "./imagenes/comun3.jpg",
+            sexo: "macho",
+            categoria: {
+                nombre: "Conejo común 3",
+                id: "conejo"
+            },
+            precio: 800
+    
+        },
+    
+        {
+            id: "conejo-04",
+            titulo: "Conejo cabeza de león",
+            imagen: "./imagenes/cabezaleon1.jpg",
+            sexo: "hembra",
+            categoria: {
+                nombre: "Conejo común 4",
+                id: "conejo"
+            },
+            precio: 1500
+    
+        },
+    
+        {
+            id: "conejo-05",
+            titulo: "Conejo cabeza de León",
+            imagen: "./imagenes/cabezaleon2.jpg",
+            sexo: "macho",
+            categoria: {
+                nombre: "Conejo común 5",
+                id: "conejo"
+            },
+            precio: 1500
+    
+        },
+    
+        {
+            id: "conejo-06",
+            titulo: "Conejo cabeza de León",
+            imagen: "./imagenes/cabezaleon3.jpg",
+            sexo: "hembra",
+            categoria: {
+                nombre: "Conejo común 6",
+                id: "conejo"
+            },
+            precio: 1500
+    
+        },
+    
+        {
+            id: "conejo-07",
+            titulo: "Conejo orejas caidas (Belier o Mini lop)",
+            imagen: "./imagenes/orejascaidas1.jpg",
+            sexo: "hembra",
+            categoria: {
+                nombre: "Conejo común 7",
+                id: "conejo"
+            },
+            precio: 1000
+    
+        },
+    
+        {
+            id: "conejo-08",
+            titulo: "Conejo orejas caidas (Belier o Mini lop)",
+            imagen: "./imagenes/orejascaidas2.jpg",
+            sexo: "macho",
+            categoria: {
+                nombre: "Conejo común 8",
+                id: "conejo"
+            },
+            precio: 1000
+    
+        },
+    
+        
+    ];
+    
+    //const de productos y alimentos
+    
+    const contenedorProductos = document.querySelector("#contenedor-productos");
+    
+    const contenedorAlimentos = document.querySelector("#contenedor-alimentos");
+    
+    const botonesCategorias = document.querySelectorAll(".boton-categoria");
+    
+    const tituloPrincipal = document.querySelector("#titulo-principal")
+    
+    let botonesAgregar = document.querySelectorAll(".producto-agregar");
+    
+    const numerito = document.querySelector("#numerito");
+    
+    //function conejos
+    
+    function cargarProductos (productosElegidos) {
+    
+        contenedorProductos.innerHTML = "";
+    
+        productosElegidos.forEach(producto => {
+            
+            const div = document.createElement("div");
+            div.classList.add("producto");
+            div.innerHTML = `
+            
+    
+            <div class="card card text-center m-3" style="width: 18rem;">
+            
+            <img src="${producto.imagen}" height="300" class="card-img-top " alt="${producto.titulo}">
+            <div class="card-body">
+              <h5 class="card-title">${producto.titulo}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item m-0">$${producto.precio}</li>
+              <li class="list-group-item m-0">${producto.sexo}</li>
+            </ul>
+            <div class="card-body">
+            <button class="producto-agregar btn btn-primary" id="${producto.id}">Agregar</button>
+            </div>
+            
+            </div>
+    
+    
+            `;
+    
 
-    let id = parseInt(prompt("Ingrese el número del conejo a comprar (del 1 al 5)"));
-    let eleccion = Conejos.find(producto => producto.id === id);
+        contenedorProductos.append(div);
+    })
 
-    if (eleccion) {
-        let mensaje = `Agrego ${eleccion.nombre}, raza: ${eleccion.raza}, sexo: ${eleccion.sexo}, su edad es: ${eleccion.edad}, con un costo de $${eleccion.precio}`;
-        alert(mensaje);
+    actualizarBotonesAgregar();
+
+
+
+    //alimentos
+
+    contenedorAlimentos.innerHTML = "";
+    
+        productosElegidos.forEach(producto => {
+            
+            const div = document.createElement("div");
+            div.classList.add("producto");
+           
+    
+            contenedorAlimentos.append(div);
+    
+        })
+
+        actualizarBotonesAgregar();
+}
+
+cargarProductos(productos);
+
+cargarProductos(alimentos);
+
+
+
+
+botonesCategorias.forEach(boton => {
+        boton.addEventListener("click", (e) => {
+    
+            botonesCategorias.forEach(boton => boton.classList.remove("active"));
+    
+            e.currentTarget.classList.add("active");
+    
+            const productosBoton = productos.filter(producto => producto.categoria.id === e.currentTarget.id); 
+    
+            cargarProductos(productosBoton);botonesCategorias.forEach(boton => {
+        boton.addEventListener("click", (e) => {
+
+
+            
+            if (e.currentTarget.id != "conejo") { 
+                            const productoCategoria = alimentos.find(producto => producto.categoria.id === e.currentTarget.id)
+                            
+                            tituloPrincipal.innerText = productoCategoria.categoria.nombre;
+                
+                            const productosBoton = alimentos.filter(producto => producto.categoria.id === e.currentTarget.id); 
+                
+                        cargarProductos(productosBoton);
+                        } else {
+                            tituloPrincipal.innerText = "Conejos";
+                            cargarProductos(productos);
+                        }
+                
+    
+        })
+    })
+
+
+
+
+
+        })
+    })
+
+
+    
+
+function actualizarBotonesAgregar() {
+    botonesAgregar = document.querySelectorAll(".producto-agregar");
+
+    botonesAgregar.forEach(boton => {
+        boton.addEventListener("click", agregarAlCarrito);
+    });
+}
+
+let productosEnCarrito;
+
+let productosEnCarritoLS = localStorage.getItem("productos-en-carrito");
+
+if (productosEnCarritoLS) {
+    productosEnCarrito = JSON.parse(productosEnCarritoLS);
+    actualizarNumerito();
+} else {
+    productosEnCarrito = [];
+}
+
+function agregarAlCarrito(e) {
+    const idBoton = e.currentTarget.id;
+    const productoAgregado = productos.find(producto => producto.id === idBoton);
+
+    if(productosEnCarrito.some(producto => producto.id === idBoton)) {
+        const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
+        productosEnCarrito[index].cantidad++;
     } else {
-        alert("Por favor introduzca un numero válido");
+        productoAgregado.cantidad = 1;
+        productosEnCarrito.push(productoAgregado);
     }
-}
-let seleccionar = document.getElementById("seleccionar");
-seleccionar.onclick = () => service();
 
-//Comida
+    actualizarNumerito();
 
-function Comida() {
-    let meses = prompt("Introduzca la edad de su conejo en meses de 1 a 12 para saber que tipo de comida es la recomendada.");
-    if (meses >= 1 && meses <= 3) {
-        alert("su conejo es un gazapo aun le recomendamos no sobrealimentarlo y solo darle lechuga y tomate");
-    } else if (meses >= 4 && meses <= 6) {
-        alert("Su conejo alcanzo la madurez sexual, y es capaz de comer alfalfa o tambien conocido como pienso, deberia siempre tener este alimento a su disposición al igual que agua, ademas deberia realizar 1 o 2 comidas de lechuga diarias y zanahorias");
-    } else if (meses >= 6 && meses <= 12) {
-        alert("Su conejo deberia tener heno siempre a su disposición ya que es el 80% de su alimentación al igual que agua, ademas de realizar 4 comidas al dia de lechuga, tomate y/o zanahorias.");
-    } else {
-        alert("Porfavor Ingrese la edad de su conejo en meses entre 1 y 12");
-    }
-}
-let alimento = document.getElementById("alimento");
-alimento.onclick = () => Comida();
-
-//Confirmar compra
-
-function confirmar() {
-
- let confirmacionCompra = prompt("Desea confirmar compra?");
-
-  
- if (confirmacionCompra == "si") {
-     alert("Gracias por su compra");
- } else {
-    alert("Gracias por su visita");
- }
-
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 }
 
-let confirmartotal = document.getElementById("confirmartotal");
-confirmartotal.onclick = () => confirmar();
+function actualizarNumerito() {
+    let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+    numerito.innerText = nuevoNumerito;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// //array alimento
+
+// const alimentos = [
+//     {
+//         id: "alimento-01",
+//         titulo: "Alimento Balanceado",
+//         imagen: "./imagenes/alfalfa.jpg",
+//         categoria: {
+//             nombre: "Alimento balanceado",
+//             id: "alimento"
+//         },
+//         precio: 2000
+
+//     },
+
+//     {
+//         id: "alimento-02",
+//         titulo: "Lechuga",
+//         imagen: "./imagenes/lechuga.jpg",
+//         categoria: {
+//             nombre: "Lechuga",
+//             id: "alimento"
+//         },
+//         precio: 100
+
+//     },
+
+//     {
+//         id: "alimento-03",
+//         titulo: "Tomate",
+//         imagen: "./imagenes/tomaco.jpg",
+//         categoria: {
+//             nombre: "Tomate",
+//             id: "alimento"
+//         },
+//         precio: 200
+
+//     },
+
+//     {
+//         id: "alimento-04",
+//         titulo: "Zanahoria",
+//         imagen: "./imagenes/zanahoria.jpg",
+//         categoria: {
+//             nombre: "Zanahoria",
+//             id: "alimento"
+//         },
+//         precio: 150
+
+//     },
+// ];
+
+// //conejos
+
+// const productos = [
+//     {
+//         id: "conejo-01",
+//         titulo: "Conejo común",
+//         imagen: "./imagenes/comun1.jpg",
+//         categoria: {
+//             nombre: "Conejo común 1",
+//             id: "conejo"
+//         },
+//         precio: 800
+
+//     },
+
+//     {
+//         id: "conejo-02",
+//         titulo: "Conejo común",
+//         imagen: "./imagenes/comun2.jpg",
+//         categoria: {
+//             nombre: "Conejo común 2",
+//             id: "conejo"
+//         },
+//         precio: 800
+
+//     },
+
+//     {
+//         id: "conejo-03",
+//         titulo: "Conejo común",
+//         imagen: "./imagenes/comun3.jpg",
+//         categoria: {
+//             nombre: "Conejo común 3",
+//             id: "conejo"
+//         },
+//         precio: 800
+
+//     },
+
+//     {
+//         id: "conejo-04",
+//         titulo: "Conejo cabeza de león",
+//         imagen: "./imagenes/cabezaleon1.jpg",
+//         categoria: {
+//             nombre: "Conejo común 4",
+//             id: "conejo"
+//         },
+//         precio: 1500
+
+//     },
+
+//     {
+//         id: "conejo-05",
+//         titulo: "conejo 05",
+//         imagen: "./imagenes/cabezaleon2.jpg",
+//         categoria: {
+//             nombre: "Conejo común 5",
+//             id: "conejo"
+//         },
+//         precio: 1500
+
+//     },
+
+//     {
+//         id: "conejo-06",
+//         titulo: "conejo 06",
+//         imagen: "./imagenes/cabezaleon3.jpg",
+//         categoria: {
+//             nombre: "Conejo común 6",
+//             id: "conejo"
+//         },
+//         precio: 1500
+
+//     },
+
+//     {
+//         id: "conejo-07",
+//         titulo: "conejo 07",
+//         imagen: "./imagenes/orejascaidas1.jpg",
+//         categoria: {
+//             nombre: "Conejo común 7",
+//             id: "conejo"
+//         },
+//         precio: 1000
+
+//     },
+
+//     {
+//         id: "conejo-08",
+//         titulo: "conejo 08",
+//         imagen: "./imagenes/orejascaidas2.jpg",
+//         categoria: {
+//             nombre: "Conejo común 8",
+//             id: "conejo"
+//         },
+//         precio: 1000
+
+//     },
+
+    
+// ];
+
+// //const de productos y alimentos
+
+// const contenedorProductos = document.querySelector("#contenedor-productos");
+
+// const contenedorAlimentos = document.querySelector("#contenedor-alimentos");
+
+// const botonesCategorias = document.querySelectorAll(".boton-categoria");
+
+// const tituloPrincipal = document.querySelector("#titulo-principal")
+
+// let botonesAgregar = document.querySelectorAll(".producto-agregar");
+
+// const numerito = document.querySelector("#numerito");
+
+// //function conejos
+
+// function cargarProductos (productosElegidos) {
+
+//     contenedorProductos.innerHTML = "";
+
+//     productosElegidos.forEach(producto => {
+        
+//         const div = document.createElement("div");
+//         div.classList.add("producto");
+//         div.innerHTML = `
+        
+
+//         <div class="card card text-center m-3" style="width: 18rem;">
+        
+//         <img src="${producto.imagen}" height="300" class="card-img-top " alt="${producto.titulo}">
+//         <div class="card-body">
+//           <h5 class="card-title">${producto.titulo}</h5>
+//         </div>
+//         <ul class="list-group list-group-flush">
+//           <li class="list-group-item m-0">$${producto.precio}</li>
+//           <li class="list-group-item m-0">Sexo: hembra</li>
+//         </ul>
+//         <div class="card-body">
+//         <button class="producto-agregar btn btn-primary" id="${producto.id}">Agregar</button>
+//         </div>
+        
+//         </div>
+
+
+//         `;
+
+
+//         contenedorProductos.append(div);
+
+//     })
+
+//     actualiarBotonesAgregar();
+
+// }
+
+// //function alimentos
+
+// function cargarProductos (productosElegidos) {
+
+//     contenedorAlimentos.innerHTML = "";
+
+//     productosElegidos.forEach(producto => {
+        
+//         const div = document.createElement("div");
+//         div.classList.add("producto");
+//         div.innerHTML = `
+        
+
+//         <div class="card card text-center m-3" style="width: 18rem;">
+        
+//         <img src="${producto.imagen}" height="300" class="card-img-top " alt="${producto.titulo}">
+//         <div class="card-body">
+//           <h5 class="card-title">${producto.titulo}</h5>
+//         </div>
+//         <ul class="list-group list-group-flush">
+//           <li class="list-group-item m-0">$${producto.precio}</li>
+//         </ul>
+//         <div class="card-body">
+//         <button class="producto-agregar btn btn-primary" id="${producto.id}">Agregar</button>
+//         </div>
+        
+//         </div>
+
+
+//         `;
+
+
+//         contenedorAlimentos.append(div);
+
+//     })
+
+// }
+
+// cargarProductos(alimentos);
+
+// cargarProductos(productos);
+
+// //conejos
+
+// botonesCategorias.forEach(boton => {
+//     boton.addEventListener("click", (e) => {
+
+//         botonesCategorias.forEach(boton => boton.classList.remove("active"));
+
+//         e.currentTarget.classList.add("active");
+
+//         const productosBoton = productos.filter(producto => producto.categoria.id === e.currentTarget.id); 
+
+//         cargarProductos(productosBoton);
+
+//     })
+// })
+
+
+// //Alimento
+
+
+// botonesCategorias.forEach(boton => {
+//     boton.addEventListener("click", (e) => {
+
+//         botonesCategorias.forEach(boton => boton.classList.remove("active"));
+
+//         e.currentTarget.classList.add("active");
+
+//         if (e.currentTarget.id != "conejo") { 
+//             const productoCategoria = alimentos.find(producto => producto.categoria.id === e.currentTarget.id)
+            
+//             tituloPrincipal.innerText = productoCategoria.categoria.nombre;
+
+//             const productosBoton = alimentos.filter(producto => producto.categoria.id === e.currentTarget.id); 
+
+//         cargarProductos(productosBoton);
+//         } else {
+//             tituloPrincipal.innerText = "Conejos";
+//             cargarProductos(productos);
+//         }
+
+        
+//     })
+// })
+
+// function actualiarBotonesAgregar() {
+//     botonesAgregar = document.querySelectorAll(".productos-agregar");
+
+//     botonesAgregar.forEach(boton => {
+//         boton.addEventListener("click", agregarAlCarrito);
+//     });
+// }
+
+// const productosEnCarrito = [];
+
+// function agregarAlCarrito(e) {
+ 
+//      const idBoton = e.currentTarget.id;
+//      const productosAgregado = productos.find(producto => producto.id === idBoton);
+
+//      if(productosEnCarrito.some(producto => producto.id === idBoton)) {
+
+//         const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
+//         productosEnCarrito[index].cantidad++;
+
+//      } else {
+
+//         productoAgregado.cantidad = 1;
+//         productosEnCarrito.push (productoAgregado);
+//      }
+
+//      actualizarNumerito()
+//      console.log(productosEnCarrito);
+
+// }
+
+// function actualizarNumerito() {
+//     let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+//     numerito.innerText = nuevoNumerito;
+// }
+
+
+
+/* <div class="card card text-center m-3" style="width: 18rem;">
+    <img src="./imagenes/comun1.jpg" height="300" class="card-img-top " alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Conejo Común</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item m-0">Precio: $800</li>
+      <li class="list-group-item m-0">Sexo: hembra</li>
+    </ul>
+    <div class="card-body">
+        <a href="#" class="btn btn-primary">Añadir al carrito</a>
+    </div>
+  </div>
+
+  <div class="card card text-center m-3" style="width: 18rem;">
+    <img src="./imagenes/comun2.jpg" height="300" class="card-img-top " alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Conejo Común</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item m-0">Precio: $800</li>
+      <li class="list-group-item m-0">Sexo: hembra</li>
+    </ul>
+    <div class="card-body">
+        <a href="#" class="btn btn-primary">Añadir al carrito</a>
+    </div>
+  </div>
+
+  <div class="card card text-center m-3" style="width: 18rem;">
+    <img src="./imagenes/cabezaleon1.jpg" height="300" class="card-img-top " alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Conejo cabeza de León</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item m-0">Precio: $1500</li>
+      <li class="list-group-item m-0">Sexo: hembra</li>
+    </ul>
+    <div class="card-body">
+        <a href="#" class="btn btn-primary">Añadir al carrito</a>
+    </div>
+  </div>
+
+  <div class="card card text-center m-3" style="width: 18rem;">
+    <img src="./imagenes/cabezaleon2.jpg" height="300" class="card-img-top " alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Conejo cabeza de león</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item m-0">Precio: $1500</li>
+      <li class="list-group-item m-0">Sexo: macho</li>
+    </ul>
+    <div class="card-body">
+        <a href="#" class="btn btn-primary">Añadir al carrito</a>
+    </div>
+  </div>
+
+  <div class="card card text-center m-3" style="width: 18rem;">
+    <img src="./imagenes/orejascaidas1.jpg" height="300" class="card-img-top " alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Conejo orejas caidas (Belier o Mini lop)</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item m-0">Precio: $1000</li>
+      <li class="list-group-item m-0">Sexo: hembra</li>
+    </ul>
+    <div class="card-body">
+        <a href="#" class="btn btn-primary">Añadir al carrito</a>
+    </div>
+  </div>
+
+  <div class="card card text-center m-3" style="width: 18rem;">
+    <img src="./imagenes/orejascaidas2.jpg" height="300" class="card-img-top " alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Conejo orejas caidas (Belier o Mini lop)</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item m-0">Precio: $1000</li>
+      <li class="list-group-item m-0">Sexo: hembra</li>
+    </ul>
+    <div class="card-body">
+        <a href="#" class="btn btn-primary">Añadir al carrito</a>
+    </div>
+  </div>
+
+  <div class="card card text-center m-3" style="width: 18rem;">
+    <img src="./imagenes/cabezaleon3.jpg" height="300" class="card-img-top " alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Conejo cabeza de león</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item m-0">Precio: $1500</li>
+      <li class="list-group-item m-0">Sexo: hembra</li>
+    </ul>
+    <div class="card-body">
+        <a href="#" class="btn btn-primary">Añadir al carrito</a>
+    </div>
+  </div>
+
+  <div class="card card text-center m-3" style="width: 18rem;">
+    <img src="./imagenes/comun3.jpg" height="300" class="card-img-top " alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Conejo común</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item m-0">Precio: $800</li>
+      <li class="list-group-item m-0">Sexo: macho</li>
+    </ul>
+    <div class="card-body">
+        <a href="#" class="btn btn-primary">Añadir al carrito</a>
+    </div>
+  </div> */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   botonesCategorias.forEach(boton => {
+//     boton.addEventListener("click", (e) => {
+
+//         botonesCategorias.forEach(boton => boton.classList.remove("active"));
+
+//         e.currentTarget.classList.add("active");
+
+//         const productosBoton = productos.filter(producto => producto.categoria.id === e.currentTarget.id); 
+
+//         cargarProductos(productosBoton);botonesCategorias.forEach(boton => {
+//     boton.addEventListener("click", (e) => {
+
+//         botonesCategorias.forEach(boton => boton.classList.remove("active"));
+
+//         e.currentTarget.classList.add("active");
+
+//         const productosBoton = productos.filter(producto => producto.categoria.id === e.currentTarget.id); 
+
+//         cargarProductos(productosBoton);
+
+//         if (e.currentTarget.id != "conejo") { 
+//                         const productoCategoria = alimentos.find(producto => producto.categoria.id === e.currentTarget.id)
+                        
+//                         tituloPrincipal.innerText = productoCategoria.categoria.nombre;
+            
+//                         const productosBoton = alimentos.filter(producto => producto.categoria.id === e.currentTarget.id); 
+            
+//                     cargarProductos(productosBoton);
+//                     } else {
+//                         tituloPrincipal.innerText = "Conejos";
+//                         cargarProductos(productos);
+//                     }
+            
+
+//     })
+// })
+
+
+
+
+// function actualizarBotonesAgregar() {
+// botonesAgregar = document.querySelectorAll(".producto-agregar");
+
+// botonesAgregar.forEach(boton => {
+//     boton.addEventListener("click", agregarAlCarrito);
+// });
+// }
+
+// let productosEnCarrito;
+
+// let productosEnCarritoLS = localStorage.getItem("productos-en-carrito");
+
+// if (productosEnCarritoLS) {
+// productosEnCarrito = JSON.parse(productosEnCarritoLS);
+// actualizarNumerito();
+// } else {
+// productosEnCarrito = [];
+// }
+
+// function agregarAlCarrito(e) {
+// const idBoton = e.currentTarget.id;
+
+// const productoAgregado = productos.find(producto => producto.id === idBoton);
+
+// const alimentoAgregado = alimentos.find(producto => producto.id === idBoton);
+
+// if(productosEnCarrito.some(producto => producto.id === idBoton)) {
+//     const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
+//     productosEnCarrito[index].cantidad++;
+// } else {
+//     productoAgregado.cantidad = 1;
+//     productosEnCarrito.push(productoAgregado);
+// }
+
+// actualizarNumerito();
+
+// localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+// }
+
+// function actualizarNumerito() {
+// let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+// numerito.innerText = nuevoNumerito;
+// }
+
+
+//     })
+// })
+
+
+
+
+// function actualizarBotonesAgregar() {
+// botonesAgregar = document.querySelectorAll(".producto-agregar");
+
+// botonesAgregar.forEach(boton => {
+//     boton.addEventListener("click", agregarAlCarrito);
+// });
+// }
+
+// let productosEnCarrito;
+
+// let productosEnCarritoLS = localStorage.getItem("productos-en-carrito");
+
+// if (productosEnCarritoLS) {
+// productosEnCarrito = JSON.parse(productosEnCarritoLS);
+// actualizarNumerito();
+// } else {
+// productosEnCarrito = [];
+// }
+
+// function agregarAlCarrito(e) {
+// const idBoton = e.currentTarget.id;
+// const productoAgregado = productos.find(producto => producto.id === idBoton);
+
+// if(productosEnCarrito.some(producto => producto.id === idBoton)) {
+//     const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
+//     productosEnCarrito[index].cantidad++;
+// } else {
+//     productoAgregado.cantidad = 1;
+//     productosEnCarrito.push(productoAgregado);
+// }
+
+// actualizarNumerito();
+
+// localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+// }
+
+// function actualizarNumerito() {
+// let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+// numerito.innerText = nuevoNumerito;
+// }

@@ -6,88 +6,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/styles.css">
+
     <title>Venta de conejos</title>
 </head>
 
 <body>
+
+  <!-- Header -->
     
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 d-flex justify-content-center p-5">
-     <h1>Venta de conejos</h1>       
+<header>
+
+    <nav class="navbar bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="./index.html">
+            <img src="./imagenes/icon.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            La Madriguera
+          </a>
+          <a class="navbar-brand" href="">Registrarse</a>
         </div>
+      </nav>
+
+</header>
+
+<main>
+
+  <div class="container">
+   <div class="col-12 d-flex justify-content-center">
+    <form class="d-flex col-12 m-3" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-primary" type="submit">Buscar</button>
+      </form>
     </div>
-</div>
-    
-    
+  </div>
+
+  <a href="./cart.html" class="btn-flotante btn btn-primary"><i class="bi bi-cart-fill"></i><span id="numerito" class="numerito">0</span></a>
+
+<!-- Conejos cards -->
+
+<h1 class="d-flex justify-content-center box__title titulo-principal" id="titulo-principal">Conejos</h1>
+
 <div class="container">
   <div class="row">
-   
-    <!-- Registro -->
-   
-    <h3>Primero registrese para continuar porfavor.</h3>
-    <div class="col-auto">
-        <button id="registrarse" type="submit" class="btn btn-primary mb-3">Registrarse</button>
+    <div class="col-6 d-flex justify-content-center">
+      <button id="conejo" class="btn btn-color btn-primary boton-menu boton-categoria active">Conejos</button>
     </div>
-    <hr>
-  
-<!-- Pago -->
-
-    <h2>Porfavor a continuación elija su metodo de pago</h2>
-    <div class="col-auto">
-        <button id="metodoPago" type="submit" class="btn btn-primary mb-3">Seleccionar</button>
+    <div class="col-6 d-flex justify-content-center">
+      <button id="alimento" class="btn btn-color btn-primary boton-menu boton-categoria">Alimento</button>
     </div>
-    <hr>
-    
-<!-- Eleccion de conejo -->
-    <h2>Porfavor seleccione una opción:</h2>
-    <h3>Conejos comunes (precio 800)</h3>
-    <ol>
-        <img src="./imagenes/comun1.jpg" class="conejo__img">
-        <li>1-Lylia de 1 año de edad</li>
-        <img src="./imagenes/comun2.jpg" class="conejo__img">
-        <li>2-Tira de 8 meses de edad</li>
-    </ol>
-    
-    <h3>Conejos cabeza de león (precio 1500)</h3>
-    <ol>
-        <img src="./imagenes/cabezaleon1.jpg" class="conejo__img">
-        <li>3-Gazapo de 2 meses hembra</li>
-        <img src="./imagenes/cabezaleon2.jpg" class="conejo__img">
-        <li>4-Pepillo de 1 año de edad</li>
-    </ol>
-    
-    <h3>Conejos orejas caidas (Belier o Mini lop, precio 1000)</h3>
-    <ol>
-        <img src="./imagenes/orejascaidas1.jpg" class="conejo__img">
-        <li>5-Gazapo de 2 meses hembra</li>
-    </ol>
-
-    <div class="col-auto">
-        <button id="seleccionar" type="submit" class="btn btn-primary mb-3">Seleccionar</button>
-    </div>
-    <hr>
-
-    <!-- Alimento -->
-
-    <h3>Alimento sugerido para su conejo</h3>
-
-    <div class="col-auto">
-        <button id="alimento" type="submit" class="btn btn-primary mb-3">Saber mas</button>
-    </div>
-    <hr>
-
-    <!-- Confirmar compra -->
-        
-    <h3>Confirmación de compra</h3>
-
-    <div class="col-auto">
-        <button id="confirmartotal" type="submit" class="btn btn-primary mb-3">Confirmar compra</button>
-    </div>
-    
- </div>
+  </div>
 </div>
+
+
+<div class="container">
+
+ <div id="contenedor-productos" class="row contenedor-productos ">
+
+  
+ </div>
+
+</div>
+
+<!-- Alimento -->
+
+<div class="container">
+
+  <div id="contenedor-alimentos" class="row contenedor-alimentos ">
+ 
+   
+  </div>
+ 
+ </div>
+
+
+<!-- Footer -->
+
+<footer class="bg-light text-black py-4">
+  <div class="container">
+   <nav class="row">
+       
+      <div class="col-12 d-flex justify-content-center pt-3">
+       <hr>
+       <p>Todos los derechos reservados © 2022 <b>La Madriguera</b><img src="./imagenes/icon.png" alt="logo" class="img-logo mr-2"></p>
+      
+      </div>
+   </nav>
+  </div>
+
+</footer>
+
+</main>
+ 
+
     <!-- javascrip -->
 
     <script src="./js/index.js" ></script>
