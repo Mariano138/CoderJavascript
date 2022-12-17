@@ -1,0 +1,7 @@
+[
+    {"id": "ropa1", "nombre": "Ropa1", "precio": 1500, "imagen": "./imagenes/ropa1.jpg"},
+    {"id": "ropa2", "nombre": "Ropa2", "precio": 1500, "imagen": "./imagenes/ropa2.jpg"},
+    {"id": "ropa3", "nombre": "Ropa3", "precio": 1500, "imagen": "./imagenes/ropa3.jpg"},
+    {"id": "ropa4", "nombre": "Ropa4", "precio": 1500, "imagen": "./imagenes/ropa4.jpg"},
+    {"id": "ropa5", "nombre": "Ropa5", "precio": 1500, "imagen": "./imagenes/ropa5.jpg"}
+]
