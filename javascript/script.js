@@ -127,12 +127,16 @@ const productos = [
     },
 ];
 
+//Dom
+
 const contenedorProductos = document.querySelector("#contenedor-productos");
 const botonesCategorias = document.querySelectorAll(".boton-categoria");
 const tituloPrincipal = document.querySelector("#titulo-principal");
 let botonesAgregar = document.querySelectorAll(".producto-agregar");
 const numerito = document.querySelector("#numerito");
+let botonesRopa = document.querySelectorAll(".producto-agregar-ropa");
 
+//Cargar Productos
 
 function cargarProductos(productosElegidos) {
 
@@ -161,6 +165,8 @@ function cargarProductos(productosElegidos) {
 }
 
 cargarProductos(productos);
+
+//Categoria de los botones
 
 botonesCategorias.forEach(boton => {
 
@@ -207,8 +213,22 @@ if(productosEnCarritoLS) {
     productosEnCarrito = [];
 }
 
+//Agregar al carrito
+
 
 function agregarAlCarrito(e) {
+
+    Toastify({
+
+        text: "Agregado al carrito",
+        
+        duration: 3000,
+
+        style: {
+            background: "linear-gradient(to right, #1a7431, #1a7431)",
+          }
+        
+    }).showToast();
 
     const idBoton = e.currentTarget.id;
     const productoAgregado = productos.find(producto => producto.id === idBoton);
@@ -229,10 +249,46 @@ function agregarAlCarrito(e) {
 }
 
 
+//Actualizar numero de objetos en el carrito
+
 function actualizarNumerito () {
     let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
     numerito.innerText = nuevoNumerito;
 }
 
 //Fetch
+
+const ropa = document.querySelector("#contenedor-productos");
+
+fetch ("./javascript/productos.json")
+    .then(response => response.json())
+    .then(data => {
+        mostrarProductos(data);
+    })
+
+    function mostrarProductos(productos) {
+            
+        productos.forEach(dataz => {
+    
+                const divv = document.createElement("div");
+    
+                divv.classList.add("producto");
+    
+                divv.innerHTML = `
+                    <img class="producto-imagen" src="${dataz.imagen}" alt="${dataz.titulo}">
+                    <div class="producto-detalles">
+                        <h3 class="producto-titulo">${dataz.titulo}</h3>
+                        <p class="producto-precio"></p>$${dataz.precio}</p>
+                        <button class="btn btn-primary producto-agregar-ropa" id="${dataz.id}" >Agregar</button>
+                    </div>
+                `;
+    
+    
+                ropa.append(divv);
+            })
+            
+            actualizarBotonesAgregar();
+    }
+    
+
 

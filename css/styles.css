@@ -9,6 +9,8 @@ a {
     text-decoration: none;
 }
 
+/* Color del body */
+
 body{
     background-color: #90A17D;
 }
@@ -26,6 +28,8 @@ h1, h2, h3, h4, h5, h6, p , a, input, textarea, ul {
     padding: 0;
 }
 
+/* Nav del index */
+
 .navbar-index {
     display: flex;
     justify-content: space-between;
@@ -36,6 +40,7 @@ h1, h2, h3, h4, h5, h6, p , a, input, textarea, ul {
     color: #495057;
     margin-bottom: 2rem;
 }
+
 main {
     background-color: white;  
     margin: 2rem;

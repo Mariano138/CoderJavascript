@@ -1,7 +1,43 @@
 [
-    {"id": "ropa1", "nombre": "Ropa1", "precio": 1500, "imagen": "./imagenes/ropa1.jpg"},
-    {"id": "ropa2", "nombre": "Ropa2", "precio": 1500, "imagen": "./imagenes/ropa2.jpg"},
-    {"id": "ropa3", "nombre": "Ropa3", "precio": 1500, "imagen": "./imagenes/ropa3.jpg"},
-    {"id": "ropa4", "nombre": "Ropa4", "precio": 1500, "imagen": "./imagenes/ropa4.jpg"},
-    {"id": "ropa5", "nombre": "Ropa5", "precio": 1500, "imagen": "./imagenes/ropa5.jpg"}
+    
+    {
+        
+        "id": "ropa-01",
+        "titulo": "Vestido",
+        "precio": "1500",
+        "imagen": "./imagenes/ropa1.jpg"
+        
+      },
+      {
+        
+        "id": "ropa-02",
+        "titulo": "Buzo",
+        "precio": "2500",
+        "imagen": "./imagenes/ropa2.jpg"
+        
+      },
+      {
+        
+        "id": "ropa-03",
+        "titulo": "Capa",
+        "precio": "2000",
+        "imagen": "./imagenes/ropa3.jpg"
+        
+      },
+      {
+        
+        "id": "ropa-04",
+        "titulo": "Capa estilo frutilla",
+        "precio": "1500",
+        "imagen": "./imagenes/ropa4.jpg"
+      },
+      {
+        
+        "id": "ropa-05",
+        "titulo": "Buzo y Jardinera",
+        "precio": "2500",
+        "imagen": "./imagenes/ropa5.jpg"
+    
+      }
+   
 ]
