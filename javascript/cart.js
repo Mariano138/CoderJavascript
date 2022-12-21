@@ -13,7 +13,7 @@ const contenedorTotal = document.querySelector("#total");
 const botonComprar = document.querySelector("#carrito-acciones-comprar");
 
 
-// Productos del carrito
+// Productos del carrito (Funcion que actualiza los productos en el carrito)
 
 function cargarProductosCarrito() {
 
@@ -73,7 +73,7 @@ function cargarProductosCarrito() {
 
 cargarProductosCarrito();
 
-// Actualizar los botones eliminar
+// Actualizar los botones eliminar (Funcion encargada de hacer funcionar el boton eliminar)
 
 function actualizarBotonesEliminar() {
     
@@ -85,7 +85,7 @@ function actualizarBotonesEliminar() {
     });
 }
 
-// Eliminar del carrito
+// Eliminar del carrito (Eliminar del local storage)
 
 function eliminarDelCarrito(e) {
 
@@ -111,7 +111,7 @@ function eliminarDelCarrito(e) {
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 }
 
-// Vaciar carrito
+// Vaciar carrito (Funcion de vaciar carrito)
 
 botonVaciar.addEventListener("click", vaciarCarrito);
 
@@ -147,6 +147,7 @@ function vaciarCarrito() {
 
 }
 
+// Funcion encargada de mostrar el total de todos los productos
 
 function actualizarTotal() {
     

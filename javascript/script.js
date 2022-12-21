@@ -1,131 +1,5 @@
-//Productos
-
-const productos = [
-    //Conejos
-    {
-        id: "conejo-01",
-        titulo: "Conejo cabeza de León",
-        imagen: "./imagenes/cabezaleon1.jpg",
-        categoria: {
-            nombre: "Conejos",
-            id: "conejos"
-        },
-        precio: 1500
-    },
-    {
-        id: "conejo-02",
-        titulo: "Conejo cabeza de León",
-        imagen: "./imagenes/cabezaleon2.jpg",
-        categoria: {
-            nombre: "Conejos",
-            id: "conejos"
-        },
-        precio: 1500
-    },
-    {
-        id: "conejo-03",
-        titulo: "Conejo cabeza de León",
-        imagen: "./imagenes/cabezaleon3.jpg",
-        categoria: {
-            nombre: "Conejos",
-            id: "conejos"
-        },
-        precio: 1500
-    },
-    {
-        id: "conejo-04",
-        titulo: "Conejo Común",
-        imagen: "./imagenes/comun1.jpg",
-        categoria: {
-            nombre: "Conejos",
-            id: "conejos"
-        },
-        precio: 1000
-    },
-    {
-        id: "conejo-05",
-        titulo: "Conejo Común",
-        imagen: "./imagenes/comun2.jpg",
-        categoria: {
-            nombre: "Conejos",
-            id: "conejos"
-        },
-        precio: 1000
-    },
-    {
-        id: "conejo-06",
-        titulo: "Conejo Común",
-        imagen: "./imagenes/comun3.jpg",
-        categoria: {
-            nombre: "Conejos",
-            id: "conejos"
-        },
-        precio: 1000
-    },
-    {
-        id: "conejo-07",
-        titulo: "Conejo orejas caídas (Mini Lop)",
-        imagen: "./imagenes/orejascaidas1.jpg",
-        categoria: {
-            nombre: "Conejos",
-            id: "conejos"
-        },
-        precio: 1200
-    },
-    {
-        id: "conejo-08",
-        titulo: "Conejo orejas caídas (Mini Lop)",
-        imagen: "./imagenes/orejascaidas2.jpg",
-        categoria: {
-            nombre: "Conejos",
-            id: "conejos"
-        },
-        precio: 1200
-    },
-
-    //Alimentos
-    
-    {
-        id: "alimento-01",
-        titulo: "Alfalfa",
-        imagen: "./imagenes/alfalfa.jpg",
-        categoria: {
-            nombre: "Alimentos",
-            id: "alimentos"
-        },
-        precio: 2000
-    },
-    {
-        id: "alimento-02",
-        titulo: "Lechuga",
-        imagen: "./imagenes/lechuga.jpg",
-        categoria: {
-            nombre: "Alimentos",
-            id: "alimentos"
-        },
-        precio: 200
-    },
-    {
-        id: "alimento-03",
-        titulo: "Tomate",
-        imagen: "./imagenes/tomaco.jpg",
-        categoria: {
-            nombre: "Alimentos",
-            id: "alimentos"
-        },
-        precio: 300
-    },
-    {
-        id: "alimento-04",
-        titulo: "Zanahoria",
-        imagen: "./imagenes/zanahoria.jpg",
-        categoria: {
-            nombre: "Alimentos",
-            id: "alimentos"
-        },
-        precio: 200
-    },
-];
+let productosCreados = localStorage.getItem("productos");
+productosCreados = JSON.parse(productosCreados);
 
 //Dom
 
@@ -134,9 +8,31 @@ const botonesCategorias = document.querySelectorAll(".boton-categoria");
 const tituloPrincipal = document.querySelector("#titulo-principal");
 let botonesAgregar = document.querySelectorAll(".producto-agregar");
 const numerito = document.querySelector("#numerito");
-let botonesRopa = document.querySelectorAll(".producto-agregar-ropa");
 
-//Cargar Productos
+
+//Fetch
+
+const productos = [];
+
+fetch("./javascript/productos.json")
+    .then((response) => response.json())
+    .then((listaProductos) => {
+        listaProductos.forEach((producto) => {
+            productos.push({
+                id: producto.id,
+                titulo: producto.titulo,
+                imagen: producto.imagen,
+                categoria: {
+                    nombre: producto.categoria.nombre,
+                    id: producto.categoria.id
+                },
+                precio: producto.precio
+            })
+        })
+        localStorage.setItem("productos", JSON.stringify(productos));
+    })
+
+//Cargo los productos
 
 function cargarProductos(productosElegidos) {
 
@@ -149,12 +45,14 @@ function cargarProductos(productosElegidos) {
             div.classList.add("producto");
 
             div.innerHTML = `
+            
                 <img class="producto-imagen" src="${producto.imagen}" alt="${producto.titulo}">
                 <div class="producto-detalles">
                     <h3 class="producto-titulo">${producto.titulo}</h3>
                     <p class="producto-precio"></p>$${producto.precio}</p>
                     <button class="btn btn-primary producto-agregar" id="${producto.id}" >Agregar</button>
                 </div>
+            
             `;
 
 
@@ -164,9 +62,9 @@ function cargarProductos(productosElegidos) {
         actualizarBotonesAgregar();
 }
 
-cargarProductos(productos);
+cargarProductos(productosCreados);
 
-//Categoria de los botones
+//Categoria de los botones (Conejos, Alimento y Ropa)
 
 botonesCategorias.forEach(boton => {
 
@@ -192,6 +90,8 @@ botonesCategorias.forEach(boton => {
     })
 });
 
+// Botones Agregar
+
 function actualizarBotonesAgregar() {
     botonesAgregar = document.querySelectorAll(".producto-agregar");
 
@@ -199,6 +99,8 @@ function actualizarBotonesAgregar() {
         boton.addEventListener("click", agregarAlCarrito)
     });
 }
+
+//Local Storage
 
 let productosEnCarrito;
 
@@ -213,7 +115,7 @@ if(productosEnCarritoLS) {
     productosEnCarrito = [];
 }
 
-//Agregar al carrito
+//Agregar al carrito (Donde se hace el push al carrito)
 
 
 function agregarAlCarrito(e) {
@@ -249,46 +151,73 @@ function agregarAlCarrito(e) {
 }
 
 
-//Actualizar numero de objetos en el carrito
+//Fuction de actualizar numero de objetos en el carrito
 
 function actualizarNumerito () {
     let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
     numerito.innerText = nuevoNumerito;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Fetch
 
-const ropa = document.querySelector("#contenedor-productos");
+// const ropa = document.querySelector("#contenedor-productos");
 
-fetch ("./javascript/productos.json")
-    .then(response => response.json())
-    .then(data => {
-        mostrarProductos(data);
-    })
+// fetch ("./javascript/productos.json")
+//     .then(response => response.json())
+//     .then(data => {
+//         mostrarProductos(data);
+//     })
 
-    function mostrarProductos(productos) {
+//     function mostrarProductos(productos) {
             
-        productos.forEach(dataz => {
+//         productos.forEach(dataz => {
     
-                const divv = document.createElement("div");
+//                 const divv = document.createElement("div");
     
-                divv.classList.add("producto");
+//                 divv.classList.add("producto");
     
-                divv.innerHTML = `
-                    <img class="producto-imagen" src="${dataz.imagen}" alt="${dataz.titulo}">
-                    <div class="producto-detalles">
-                        <h3 class="producto-titulo">${dataz.titulo}</h3>
-                        <p class="producto-precio"></p>$${dataz.precio}</p>
-                        <button class="btn btn-primary producto-agregar-ropa" id="${dataz.id}" >Agregar</button>
-                    </div>
-                `;
+//                 divv.innerHTML = `
+//                     <img class="producto-imagen" src="${dataz.imagen}" alt="${dataz.titulo}">
+//                     <div class="producto-detalles">
+//                         <h3 class="producto-titulo">${dataz.titulo}</h3>
+//                         <p class="producto-precio"></p>$${dataz.precio}</p>
+//                         <button class="btn btn-primary producto-agregar-ropa" id="${dataz.id}" >Agregar</button>
+//                     </div>
+//                 `;
     
     
-                ropa.append(divv);
-            })
+//                 ropa.append(divv);
+//             })
             
-            actualizarBotonesAgregar();
-    }
+//             actualizarBotonesAgregar();
+//     }
     
-
 

@@ -1,11 +1,136 @@
 [
+    {
+        "id": "conejo-01",
+        "titulo": "Conejo cabeza de León",
+        "imagen": "./imagenes/cabezaleon1.jpg",
+        "categoria": {
+            "nombre": "Conejos",
+            "id": "conejos"
+        },
+        "precio": 1500
+    },
+    {
+        "id": "conejo-02",
+        "titulo": "Conejo cabeza de León",
+        "imagen": "./imagenes/cabezaleon2.jpg",
+        "categoria": {
+            "nombre": "Conejos",
+            "id": "conejos"
+        },
+        "precio": 1500
+    },
+    {
+        "id": "conejo-03",
+        "titulo": "Conejo cabeza de León",
+        "imagen": "./imagenes/cabezaleon3.jpg",
+        "categoria": {
+            "nombre": "Conejos",
+            "id": "conejos"
+        },
+        "precio": 1500
+    },
+    {
+        "id": "conejo-04",
+        "titulo": "Conejo Común",
+        "imagen": "./imagenes/comun1.jpg",
+        "categoria": {
+            "nombre": "Conejos",
+            "id": "conejos"
+        },
+        "precio": 1000
+    },
+    {
+        "id": "conejo-05",
+        "titulo": "Conejo Común",
+        "imagen": "./imagenes/comun2.jpg",
+        "categoria": {
+            "nombre": "Conejos",
+            "id": "conejos"
+        },
+        "precio": 1000
+    },
+    {
+        "id": "conejo-06",
+        "titulo": "Conejo Común",
+        "imagen": "./imagenes/comun3.jpg",
+        "categoria": {
+            "nombre": "Conejos",
+            "id": "conejos"
+        },
+        "precio": 1000
+    },
+    {
+       "id": "conejo-07",
+        "titulo": "Conejo orejas caídas (Mini Lop)",
+        "imagen": "./imagenes/orejascaidas1.jpg",
+        "categoria": {
+            "nombre": "Conejos",
+            "id": "conejos"
+        },
+        "precio": 1200
+    },
+    {
+        "id": "conejo-08",
+        "titulo": "Conejo orejas caídas (Mini Lop)",
+        "imagen": "./imagenes/orejascaidas2.jpg",
+        "categoria": {
+            "nombre": "Conejos",
+            "id": "conejos"
+        },
+        "precio": 1200
+    },
     
+    {
+        "id": "alimento-01",
+        "titulo": "Alfalfa",
+        "imagen": "./imagenes/alfalfa.jpg",
+        "categoria": {
+            "nombre": "Alimentos",
+            "id": "alimentos"
+        },
+        "precio": 2000
+    },
+    {
+        "id": "alimento-02",
+        "titulo": "Lechuga",
+       "imagen": "./imagenes/lechuga.jpg",
+        "categoria": {
+            "nombre": "Alimentos",
+            "id": "alimentos"
+        },
+        "precio": 200
+    },
+    {
+        "id": "alimento-03",
+        "titulo": "Tomate",
+        "imagen": "./imagenes/tomaco.jpg",
+        "categoria": {
+            "nombre": "Alimentos",
+            "id": "alimentos"
+        },
+        "precio": 300
+    },
+    {
+        "id": "alimento-04",
+        "titulo": "Zanahoria",
+        "imagen": "./imagenes/zanahoria.jpg",
+        "categoria": {
+            "nombre": "Alimentos",
+            "id": "alimentos"
+        },
+       " precio": 200
+    },
+
     {
         
         "id": "ropa-01",
         "titulo": "Vestido",
         "precio": "1500",
-        "imagen": "./imagenes/ropa1.jpg"
+        "imagen": "./imagenes/ropa1.jpg",
+        "categoria": {
+          "nombre": "Ropa",
+          "id": "ropa"
+        }
         
       },
       {
@@ -13,31 +138,44 @@
         "id": "ropa-02",
         "titulo": "Buzo",
         "precio": "2500",
-        "imagen": "./imagenes/ropa2.jpg"
-        
+        "imagen": "./imagenes/ropa2.jpg",
+        "categoria": {
+          "nombre": "Ropa",
+          "id": "ropa"
+        }
       },
       {
         
         "id": "ropa-03",
         "titulo": "Capa",
         "precio": "2000",
-        "imagen": "./imagenes/ropa3.jpg"
-        
+        "imagen": "./imagenes/ropa3.jpg",
+        "categoria": {
+          "nombre": "Ropa",
+          "id": "ropa"
+        }
       },
       {
         
         "id": "ropa-04",
         "titulo": "Capa estilo frutilla",
         "precio": "1500",
-        "imagen": "./imagenes/ropa4.jpg"
+        "imagen": "./imagenes/ropa4.jpg",
+        "categoria": {
+          "nombre": "Ropa",
+          "id": "ropa"
+    }
       },
       {
         
         "id": "ropa-05",
         "titulo": "Buzo y Jardinera",
         "precio": "2500",
-        "imagen": "./imagenes/ropa5.jpg"
-    
+        "imagen": "./imagenes/ropa5.jpg",
+        "categoria": {
+          "nombre": "Ropa",
+          "id": "ropa"
+    }
       }
    
 ]
